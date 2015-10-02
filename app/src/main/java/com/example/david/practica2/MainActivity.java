@@ -12,11 +12,11 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText etPreu;
-    private EditText etEstalvis;
-    private EditText etAnys;
-    private EditText etEuribor;
-    private EditText etDiferencial;
+    public EditText etPreu;
+    public EditText etEstalvis;
+    public EditText etAnys;
+    public EditText etEuribor;
+    public EditText etDiferencial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,5 +134,9 @@ public class MainActivity extends AppCompatActivity {
         double total = mes * meses;
         TextView txtTotalResult = (TextView) findViewById(R.id.txtTotalResultat);
         txtTotalResult.setText(String.valueOf(total)+"€");
+    }
+
+    public void calcularHipoteca(View view) {
+        calcularHipoteca();
     }
 }
