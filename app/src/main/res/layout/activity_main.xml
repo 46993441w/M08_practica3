@@ -1,0 +1,184 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+
+    <TextView android:text="Preu inmoble(€)" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtPreu"
+        android:layout_alignBaseline="@+id/etPreu"
+        android:layout_alignBottom="@+id/etPreu"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/etPreu"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:text="120000" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etEstalvi"
+        android:layout_below="@+id/etPreu"
+        android:layout_alignRight="@+id/etPreu"
+        android:layout_alignEnd="@+id/etPreu"
+        android:layout_alignLeft="@+id/etPreu"
+        android:layout_alignStart="@+id/etPreu"
+        android:inputType="number"
+        android:text="2000" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etAnys"
+        android:layout_below="@+id/etEstalvi"
+        android:layout_alignRight="@+id/etEstalvi"
+        android:layout_alignEnd="@+id/etEstalvi"
+        android:layout_alignLeft="@+id/etEstalvi"
+        android:layout_alignStart="@+id/etEstalvi"
+        android:inputType="number"
+        android:text="30" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/etEuribor"
+        android:layout_below="@+id/etAnys"
+        android:layout_alignRight="@+id/etAnys"
+        android:layout_alignEnd="@+id/etAnys"
+        android:layout_alignLeft="@+id/etAnys"
+        android:layout_alignStart="@+id/etAnys"
+        android:inputType="numberDecimal"
+        android:text="0.163" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/etDiferencial"
+        android:layout_below="@+id/etEuribor"
+        android:layout_alignRight="@+id/etEuribor"
+        android:layout_alignEnd="@+id/etEuribor"
+        android:text="2.5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estalvis"
+        android:id="@+id/txtEstalvis"
+        android:layout_alignBaseline="@+id/etEstalvi"
+        android:layout_alignBottom="@+id/etEstalvi"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Plaç(anys)"
+        android:id="@+id/txtAnys"
+        android:layout_alignBaseline="@+id/etAnys"
+        android:layout_alignBottom="@+id/etAnys"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Euribor"
+        android:id="@+id/txtEuribor"
+        android:layout_alignBaseline="@+id/etEuribor"
+        android:layout_alignBottom="@+id/etEuribor"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diferencial"
+        android:id="@+id/txtDiferencial"
+        android:layout_alignBaseline="@+id/etDiferencial"
+        android:layout_alignBottom="@+id/etDiferencial"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CALCULAR"
+        android:id="@+id/btnCalc"
+        android:layout_below="@+id/etDiferencial"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:onClick="calcularHipoteca" />
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnCalc"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="false"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="false"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:id="@+id/row"
+        android:background="#03a8f3">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mes:"
+            android:id="@+id/txtMes"
+            android:layout_below="@+id/btnCalc"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#fff"
+            android:gravity="left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtMesResultat"
+            android:text="0"
+            android:layout_alignTop="@+id/txtMes"
+            android:layout_toRightOf="@+id/txtMes"
+            android:layout_toEndOf="@+id/txtMes"
+            android:layout_marginRight="240dp"
+            android:textColor="#fff" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total:"
+            android:id="@+id/txtTotal"
+            android:layout_alignTop="@+id/txtMesResultat"
+            android:layout_toLeftOf="@+id/txtTotalResultat"
+            android:layout_toStartOf="@+id/txtTotalResultat"
+            android:textColor="#fff"
+            android:gravity="right"
+            android:layout_gravity="right" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/txtTotalResultat"
+            android:layout_marginLeft="0dp"
+            android:textColor="#fff"
+            android:gravity="right"
+            android:layout_gravity="right" />
+    </TableRow>
+
+</RelativeLayout>
