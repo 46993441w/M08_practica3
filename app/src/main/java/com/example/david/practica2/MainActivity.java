@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         labelAnys = (TextView) findViewById(R.id.labelAnys);
 
         afegirTextWatcher();
+        seekAnys.setProgress(30);
         seekAnys.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
