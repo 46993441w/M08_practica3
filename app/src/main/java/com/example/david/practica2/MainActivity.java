@@ -28,6 +28,10 @@ public class MainActivity extends AppCompatActivity {
         etEuribor = (EditText) findViewById(R.id.etEuribor);
         etDiferencial = (EditText) findViewById(R.id.etDiferencial);
 
+        afegirTextWatcher();
+    }
+
+    private void afegirTextWatcher() {
         TextWatcher myTextWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
