@@ -8,13 +8,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     public EditText etPreu;
     public EditText etEstalvis;
-    public EditText etAnys;
+    public SeekBar seekAnys;
+    public TextView labelAnys;
     public EditText etEuribor;
     public EditText etDiferencial;
 
@@ -24,11 +26,31 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         etPreu = (EditText) findViewById(R.id.etPreu);
         etEstalvis = (EditText) findViewById(R.id.etEstalvi);
-        etAnys = (EditText) findViewById(R.id.etAnys);
+        seekAnys = (SeekBar) findViewById(R.id.seekAnys);
         etEuribor = (EditText) findViewById(R.id.etEuribor);
         etDiferencial = (EditText) findViewById(R.id.etDiferencial);
+        labelAnys = (TextView) findViewById(R.id.labelAnys);
 
         afegirTextWatcher();
+        seekAnys.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                labelAnys.setText(String.valueOf(progress));
+                if(!etPreu.getText().toString().isEmpty() && !etEstalvis.getText().toString().isEmpty() && !labelAnys.getText().toString().isEmpty() && !etEuribor.getText().toString().isEmpty() && !etDiferencial.getText().toString().isEmpty() ){
+                    calcularHipoteca();
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
     private void afegirTextWatcher() {
@@ -37,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!etPreu.getText().toString().isEmpty() && !etEstalvis.getText().toString().isEmpty() && !etAnys.getText().toString().isEmpty() && !etEuribor.getText().toString().isEmpty() && !etDiferencial.getText().toString().isEmpty() ){
+                if(!etPreu.getText().toString().isEmpty() && !etEstalvis.getText().toString().isEmpty() && !labelAnys.getText().toString().isEmpty() && !etEuribor.getText().toString().isEmpty() && !etDiferencial.getText().toString().isEmpty() ){
                     calcularHipoteca();
                 }
             }
@@ -46,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
         };
         etPreu.addTextChangedListener( myTextWatcher );
         etEstalvis.addTextChangedListener (myTextWatcher );
-        etAnys.addTextChangedListener( myTextWatcher );
         etEuribor.addTextChangedListener( myTextWatcher );
         etDiferencial.addTextChangedListener( myTextWatcher );
     }
@@ -76,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
     public void calcularHipoteca() {
         int preu = Integer.parseInt(etPreu.getText().toString());
         int estalvi = Integer.parseInt(etEstalvis.getText().toString());
-        int anys = Integer.parseInt(etAnys.getText().toString());
+        int anys = Integer.parseInt(labelAnys.getText().toString());
         double euribor = Double.parseDouble(etEuribor.getText().toString());
         double diferencial = Double.parseDouble(etDiferencial.getText().toString());
         calculMes(preu, estalvi, anys, euribor, diferencial);

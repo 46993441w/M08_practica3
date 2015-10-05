@@ -36,30 +36,33 @@
         android:inputType="number"
         android:text="2000" />
 
-    <EditText
+    <SeekBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/etAnys"
+        android:id="@+id/seekAnys"
         android:layout_below="@+id/etEstalvi"
         android:layout_alignRight="@+id/etEstalvi"
         android:layout_alignEnd="@+id/etEstalvi"
-        android:layout_alignLeft="@+id/etEstalvi"
-        android:layout_alignStart="@+id/etEstalvi"
         android:inputType="number"
-        android:text="30" />
+        android:text="30"
+        android:layout_toEndOf="@+id/labelAnys"
+        android:indeterminate="false"
+        android:max="60"
+        android:progress="1"
+        android:layout_toRightOf="@+id/labelAnys" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:id="@+id/etEuribor"
-        android:layout_below="@+id/etAnys"
-        android:layout_alignRight="@+id/etAnys"
-        android:layout_alignEnd="@+id/etAnys"
-        android:layout_alignLeft="@+id/etAnys"
-        android:layout_alignStart="@+id/etAnys"
+        android:layout_below="@+id/seekAnys"
+        android:layout_alignRight="@+id/etEstalvi"
+        android:layout_alignEnd="@+id/etEstalvi"
         android:inputType="numberDecimal"
-        android:text="0.163" />
+        android:text="0.163"
+        android:layout_alignLeft="@+id/etEstalvi"
+        android:layout_alignStart="@+id/etEstalvi" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -87,8 +90,8 @@
         android:layout_height="wrap_content"
         android:text="Plaç(anys)"
         android:id="@+id/txtAnys"
-        android:layout_alignBaseline="@+id/etAnys"
-        android:layout_alignBottom="@+id/etAnys"
+        android:layout_alignBaseline="@+id/seekAnys"
+        android:layout_alignBottom="@+id/seekAnys"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -180,5 +183,15 @@
             android:gravity="right"
             android:layout_gravity="right" />
     </TableRow>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="30"
+        android:id="@+id/labelAnys"
+        android:layout_below="@+id/etEstalvi"
+        android:layout_alignLeft="@+id/etEstalvi"
+        android:layout_alignStart="@+id/etEstalvi"
+        android:layout_marginRight="20dp" />
 
 </RelativeLayout>
