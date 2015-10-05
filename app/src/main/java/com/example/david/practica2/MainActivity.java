@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         calculTotal(cuota,mes);
     }
     public void calculTotal(double mes,int meses){
-        double total = mes * meses;
+        double total = Math.floor( mes * meses * 100 ) / 100;
         TextView txtTotalResult = (TextView) findViewById(R.id.txtTotalResultat);
         txtTotalResult.setText(String.valueOf(total)+"€");
     }
