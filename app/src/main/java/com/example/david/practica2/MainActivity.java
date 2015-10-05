@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
         etAnys = (EditText) findViewById(R.id.etAnys);
         etEuribor = (EditText) findViewById(R.id.etEuribor);
         etDiferencial = (EditText) findViewById(R.id.etDiferencial);
-        etPreu.addTextChangedListener(new TextWatcher() {
+
+        TextWatcher myTextWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override
@@ -38,55 +39,12 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void afterTextChanged(Editable s) {}
-        });
-        etEstalvis.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!etPreu.getText().toString().isEmpty() && !etEstalvis.getText().toString().isEmpty() && !etAnys.getText().toString().isEmpty() && !etEuribor.getText().toString().isEmpty() && !etDiferencial.getText().toString().isEmpty() ){
-                    calcularHipoteca();
-                }
-            }
-            @Override
-            public void afterTextChanged(Editable s) {}
-        });
-        etAnys.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!etPreu.getText().toString().isEmpty() && !etEstalvis.getText().toString().isEmpty() && !etAnys.getText().toString().isEmpty() && !etEuribor.getText().toString().isEmpty() && !etDiferencial.getText().toString().isEmpty() ){
-                    calcularHipoteca();
-                }
-            }
-            @Override
-            public void afterTextChanged(Editable s) {}
-        });
-        etEuribor.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!etPreu.getText().toString().isEmpty() && !etEstalvis.getText().toString().isEmpty() && !etAnys.getText().toString().isEmpty() && !etEuribor.getText().toString().isEmpty() && !etDiferencial.getText().toString().isEmpty() ){
-                    calcularHipoteca();
-                }
-            }
-            @Override
-            public void afterTextChanged(Editable s) {}
-        });
-        etDiferencial.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(!etPreu.getText().toString().isEmpty() && !etEstalvis.getText().toString().isEmpty() && !etAnys.getText().toString().isEmpty() && !etEuribor.getText().toString().isEmpty() && !etDiferencial.getText().toString().isEmpty() ){
-                    calcularHipoteca();
-                }
-            }
-            @Override
-            public void afterTextChanged(Editable s) {}
-        });
+        };
+        etPreu.addTextChangedListener( myTextWatcher );
+        etEstalvis.addTextChangedListener (myTextWatcher );
+        etAnys.addTextChangedListener( myTextWatcher );
+        etEuribor.addTextChangedListener( myTextWatcher );
+        etDiferencial.addTextChangedListener( myTextWatcher );
     }
 
     @Override
