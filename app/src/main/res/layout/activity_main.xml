@@ -56,13 +56,12 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:id="@+id/etEuribor"
-        android:layout_below="@+id/seekAnys"
-        android:layout_alignRight="@+id/etEstalvi"
-        android:layout_alignEnd="@+id/etEstalvi"
         android:inputType="numberDecimal"
         android:text="0.163"
-        android:layout_alignLeft="@+id/etEstalvi"
-        android:layout_alignStart="@+id/etEstalvi" />
+        android:layout_below="@+id/seekAnys"
+        android:layout_alignRight="@+id/seekAnys"
+        android:layout_alignEnd="@+id/seekAnys"
+        android:layout_marginTop="80dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -70,10 +69,9 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/etDiferencial"
+        android:text="2.5"
         android:layout_below="@+id/etEuribor"
-        android:layout_alignRight="@+id/etEuribor"
-        android:layout_alignEnd="@+id/etEuribor"
-        android:text="2.5" />
+        android:layout_alignRight="@+id/seekAnys" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -193,5 +191,16 @@
         android:layout_alignLeft="@+id/etEstalvi"
         android:layout_alignStart="@+id/etEstalvi"
         android:layout_marginRight="20dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:spinnerMode="dropdown"
+        android:layout_below="@+id/seekAnys"
+        android:layout_alignRight="@+id/seekAnys"
+        android:layout_marginTop="14dp"
+        android:textAlignment="center"
+        android:layout_alignStart="@+id/txtAnys" />
 
 </RelativeLayout>

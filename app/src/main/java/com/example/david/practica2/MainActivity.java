@@ -7,18 +7,25 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public EditText etPreu;
-    public EditText etEstalvis;
-    public SeekBar seekAnys;
-    public TextView labelAnys;
-    public EditText etEuribor;
-    public EditText etDiferencial;
+    private EditText etPreu;
+    private EditText etEstalvis;
+    private SeekBar seekAnys;
+    private TextView labelAnys;
+    private EditText etEuribor;
+    private EditText etDiferencial;
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,26 +37,68 @@ public class MainActivity extends AppCompatActivity {
         etEuribor = (EditText) findViewById(R.id.etEuribor);
         etDiferencial = (EditText) findViewById(R.id.etDiferencial);
         labelAnys = (TextView) findViewById(R.id.labelAnys);
+        spinner = (Spinner) findViewById(R.id.spinner);
 
         afegirTextWatcher();
+        seekBarPropietats();
+        spinnerPropietats();
+        calcularHipoteca();
+    }
+
+    private void seekBarPropietats() {
         seekAnys.setProgress(30);
         seekAnys.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 labelAnys.setText(String.valueOf(progress));
-                if(!etPreu.getText().toString().isEmpty() && !etEstalvis.getText().toString().isEmpty() && !labelAnys.getText().toString().isEmpty() && !etEuribor.getText().toString().isEmpty() && !etDiferencial.getText().toString().isEmpty() ){
+                if (!etPreu.getText().toString().isEmpty() && !etEstalvis.getText().toString().isEmpty() && !labelAnys.getText().toString().isEmpty() && !etEuribor.getText().toString().isEmpty() && !etDiferencial.getText().toString().isEmpty()) {
                     calcularHipoteca();
                 }
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+    }
 
+    private void spinnerPropietats() {
+        List<String> list = new ArrayList<String>();
+        list.add("Variable");
+        list.add("Fixe");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item,list);
+
+        dataAdapter.setDropDownViewResource (android.R.layout.simple_spinner_dropdown_item);
+
+        spinner.setAdapter(dataAdapter);
+
+        // Spinner item selection Listener
+        addListenerOnSpinnerItemSelection();
+    }
+
+    public void addListenerOnSpinnerItemSelection(){
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (parent.getItemAtPosition(position).toString().equals("Fixe")) {
+                    etEuribor.setVisibility(View.INVISIBLE);
+                    findViewById(R.id.txtEuribor).setVisibility(View.INVISIBLE);
+                    calcularHipoteca();
+                } else {
+                    etEuribor.setVisibility(View.VISIBLE);
+                    findViewById(R.id.txtEuribor).setVisibility(View.VISIBLE);
+                    calcularHipoteca();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
             }
         });
     }
@@ -70,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         etPreu.addTextChangedListener( myTextWatcher );
         etEstalvis.addTextChangedListener (myTextWatcher );
         etEuribor.addTextChangedListener( myTextWatcher );
-        etDiferencial.addTextChangedListener( myTextWatcher );
+        etDiferencial.addTextChangedListener(myTextWatcher);
     }
 
     @Override
@@ -104,7 +153,12 @@ public class MainActivity extends AppCompatActivity {
         calculMes(preu, estalvi, anys, euribor, diferencial);
     }
     public void calculMes(int preu, int estalvi, int anys, double euribor, double diferencial){
-        double i = euribor + diferencial;
+        double i = 0;
+        if(spinner.getSelectedItemPosition() == 0){
+            i = euribor + diferencial;
+        } else {
+            i = diferencial;
+        }
         double intRate = ( i / 100 ) / 12;
         int capital = preu - estalvi;
         int mes = anys * 12;
