@@ -5,84 +5,81 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
-    <TextView android:text="Preu inmoble(€)" android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtPreu"
-        android:layout_alignBaseline="@+id/etPreu"
-        android:layout_alignBottom="@+id/etPreu"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
+        android:id="@+id/txtInpLayPreu">
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:id="@+id/etPreu"
+            android:hint="Preu inmoble(€)"
+            android:text="120000" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/etPreu"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:text="120000" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/etEstalvi"
-        android:layout_below="@+id/etPreu"
-        android:layout_alignRight="@+id/etPreu"
-        android:layout_alignEnd="@+id/etPreu"
-        android:layout_alignLeft="@+id/etPreu"
-        android:layout_alignStart="@+id/etPreu"
-        android:inputType="number"
-        android:text="2000" />
-
+        android:id="@+id/txtInpLayEstalvi"
+        android:layout_below="@+id/txtInpLayPreu" >
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/etEstalvi"
+            android:inputType="number"
+            android:hint="Estalvis"
+            android:text="2000" />
+    </android.support.design.widget.TextInputLayout>
     <SeekBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/seekAnys"
-        android:layout_below="@+id/etEstalvi"
-        android:layout_alignRight="@+id/etEstalvi"
-        android:layout_alignEnd="@+id/etEstalvi"
+        android:layout_below="@+id/txtInpLayEstalvi"
+        android:layout_alignRight="@+id/txtInpLayEstalvi"
+        android:layout_alignEnd="@+id/txtInpLayEstalvi"
         android:inputType="number"
         android:text="30"
         android:layout_toEndOf="@+id/labelAnys"
         android:indeterminate="false"
         android:max="60"
         android:progress="1"
-        android:layout_toRightOf="@+id/labelAnys" />
-
-    <EditText
-        android:layout_width="wrap_content"
+        android:layout_alignLeft="@+id/btnCalc"
+        android:layout_alignStart="@+id/btnCalc" />
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/etEuribor"
-        android:inputType="numberDecimal"
-        android:text="0.163"
-        android:layout_below="@+id/seekAnys"
-        android:layout_alignRight="@+id/seekAnys"
-        android:layout_alignEnd="@+id/seekAnys"
-        android:layout_marginTop="80dp" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:id="@+id/etDiferencial"
-        android:text="2.5"
-        android:layout_below="@+id/etEuribor"
-        android:layout_alignRight="@+id/seekAnys" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Estalvis"
-        android:id="@+id/txtEstalvis"
-        android:layout_alignBaseline="@+id/etEstalvi"
-        android:layout_alignBottom="@+id/etEstalvi"
+        android:id="@+id/txtInpLayEuribor"
+        android:layout_below="@+id/spinner"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
+        android:layout_alignParentStart="true">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/etEuribor"
+            android:inputType="numberDecimal"
+            android:text="0.163"
+            android:hint="Euribor" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtInpLayDiferencial"
+        android:layout_below="@+id/txtInpLayEuribor"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/etDiferencial"
+            android:text="2.5"
+            android:hint="Diferencial"
+            android:layout_alignTop="@+id/btnCalc"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </android.support.design.widget.TextInputLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -93,49 +90,27 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Euribor"
-        android:id="@+id/txtEuribor"
-        android:layout_alignBaseline="@+id/etEuribor"
-        android:layout_alignBottom="@+id/etEuribor"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Diferencial"
-        android:id="@+id/txtDiferencial"
-        android:layout_alignBaseline="@+id/etDiferencial"
-        android:layout_alignBottom="@+id/etDiferencial"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CALCULAR"
         android:id="@+id/btnCalc"
-        android:layout_below="@+id/etDiferencial"
+        android:onClick="calcularHipoteca"
+        android:layout_above="@+id/row"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
-        android:onClick="calcularHipoteca" />
+        android:layout_marginBottom="15dp" />
 
     <TableRow
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnCalc"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:layout_marginTop="50dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="false"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:id="@+id/row"
-        android:background="#03a8f3">
+        android:background="#03a8f3"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="74dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -187,10 +162,11 @@
         android:layout_height="wrap_content"
         android:text="30"
         android:id="@+id/labelAnys"
-        android:layout_below="@+id/etEstalvi"
-        android:layout_alignLeft="@+id/etEstalvi"
-        android:layout_alignStart="@+id/etEstalvi"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="18dp"
+        android:layout_above="@+id/spinner"
+        android:layout_toLeftOf="@+id/btnCalc"
+        android:layout_toStartOf="@+id/btnCalc"
+        android:layout_marginEnd="18dp" />
 
     <Spinner
         android:layout_width="wrap_content"
@@ -201,6 +177,8 @@
         android:layout_alignRight="@+id/seekAnys"
         android:layout_marginTop="14dp"
         android:textAlignment="center"
-        android:layout_alignStart="@+id/txtAnys" />
+        android:layout_alignStart="@+id/seekAnys" />
+
+
 
 </RelativeLayout>

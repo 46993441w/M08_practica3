@@ -88,11 +88,11 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (parent.getItemAtPosition(position).toString().equals("Fixe")) {
                     etEuribor.setVisibility(View.INVISIBLE);
-                    findViewById(R.id.txtEuribor).setVisibility(View.INVISIBLE);
+                    //findViewById(R.id.txtEuribor).setVisibility(View.INVISIBLE);
                     calcularHipoteca();
                 } else {
                     etEuribor.setVisibility(View.VISIBLE);
-                    findViewById(R.id.txtEuribor).setVisibility(View.VISIBLE);
+                    //findViewById(R.id.txtEuribor).setVisibility(View.VISIBLE);
                     calcularHipoteca();
                 }
             }
